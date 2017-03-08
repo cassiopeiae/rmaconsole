@@ -21,8 +21,8 @@ client_secret = os.environ.get("CLIENT_SECRET")
 
 @app.route('/')
 def home():
-    the_arg = request.args.get('rma')
-    if (the_arg):
+    if (request.args.get('rma')):
+        the_arg = request.args.get('rma')
         rma_num = [x.strip() for x in the_arg.split(',')]
         returns = []
         for index in rma_num:
@@ -31,6 +31,9 @@ def home():
             headers = {'Authorization': 'Bearer ' + get_token()}
             data = requests.get(req_url, headers=headers)
             returns.append(data.json()[u'returns'][u'RmaRecord'][0])
+    else:
+        rma_num = ''
+        returns = []
     return render_template('index.html', rma=rma_num, response=returns,
                            title='RMA Console')
 
