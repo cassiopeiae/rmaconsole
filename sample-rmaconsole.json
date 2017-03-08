@@ -1,0 +1,27 @@
+{
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "DOCKERUSER/rmaconsole:latest",
+            "forcePullImage": true,
+            "network": "BRIDGE",
+            "portMappings": [{
+                "containerPort": 5000,
+                "hostPort": 0
+            }]
+        },
+        "forcePullImage": true
+    },
+    "healthChecks": [{
+        "protocol": "TCP",
+        "portIndex": 0
+    }],
+    "id": "/imapex/rmaconsole",
+    "instances": 1,
+    "cpus": 0.1,
+    "mem": 16,
+    "env": {
+        "CLIENT_ID": "CLIENTID",
+        "CLIENT_SECRET": "CLIENTSECRET"
+    }
+}
