@@ -43,7 +43,7 @@ echo "***************************************************"
 echo "Installing the demoapp as  imapex/rmaconsole"
 curl -k -X POST -u $mantl_user:$mantl_password https://$control_address:8080/v2/apps \
 -H "Content-type: application/json" \
--d @$docker_username-demoapp.json \
+-d @$docker_username-rmaconsole.json \
 | python -m json.tool
 
 echo "***************************************************"

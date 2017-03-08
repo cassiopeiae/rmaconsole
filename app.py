@@ -22,9 +22,9 @@ client_secret = os.environ.get("CLIENT_SECRET")
 @app.route('/')
 def home():
     the_arg = request.args.get('rma')
-    rma_num = [x.strip() for x in the_arg.split(',')]
-    returns = []
-    if (rma_num):
+    if (the_arg):
+        rma_num = [x.strip() for x in the_arg.split(',')]
+        returns = []
         for index in rma_num:
             print index
             req_url = 'https://api.cisco.com/return/v1.0/returns/rma_numbers/' + index
